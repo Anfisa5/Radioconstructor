@@ -3,24 +3,25 @@ package ru.netology;
 public class Radio {
 
     //переменная для количества радиостанций
-    private int number;
+    private int number = 10;
 
     //переменная для радиостанции с максимальным номером
-    private int maxRadioStation;
+    private int maxRadioStation = number - 1;
+    //переменную для минимальной радиостанции
+    private int minRadioStation = 0;
 
     //переменная для текущей радиостанции
     private int currentRadioStation;
     // переменная для громкости звука
     private int currentVolume;
 
-    // конструктор без параментров
+    // конструктор без параметров
     public Radio() {
-       maxRadioStation = 9;
     }
 
     // конструктор с параметром количество радиостанций
     public Radio(int number) {
-       this.maxRadioStation = number  -1;
+        this.maxRadioStation = number - 1;
 
     }
 
@@ -38,7 +39,7 @@ public class Radio {
 
     public void setCurrentRadioStation(int currentRadioStation) {
 
-        if (currentRadioStation < 0) {
+        if (currentRadioStation < minRadioStation) {
             return;
         }
         if (currentRadioStation > maxRadioStation) {
@@ -61,7 +62,7 @@ public class Radio {
     // в остальных случаях радио переключается просто на предыдущую станцию.
     public void prev() {
 
-        if (currentRadioStation > 0) {
+        if (currentRadioStation > minRadioStation) {
             currentRadioStation--;
         } else {
             currentRadioStation = maxRadioStation;
